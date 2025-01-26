@@ -27,7 +27,7 @@ if(isset($_GET['type']) && isset($_GET['type']) == 'events'){
 while($row = mysqli_fetch_assoc($get_all_data)){
 
     $attendies = count_data('event_registrations','event_id',$row['id']);
-    $row['attendies'] = $attendies;
+    $row['attendees'] = $attendies;
     $data[] = $row;
 
 }

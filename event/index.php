@@ -23,6 +23,7 @@
                         <th>Featured Image</th>
                         <th>Date</th>
                         <th>Capacity</th>
+                        <th>Attendees</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -30,8 +31,23 @@
         </div>
     </div>
     
+
+    <!-- Modal for View Attendie-->
+    <div class="modal fade" id="attendee_modal" tabindex="-1" aria-labelledby="attendeeModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body modal-dynamic-content"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm modal_close" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/preloader_middle_body.js"></script>
     <script>
         $(document).ready(function () {
+            
             $('#eventsTable').DataTable({
                 processing: true,
                 serverSide: false,
@@ -54,13 +70,13 @@
                     },
                     { data: 'event_date' },
                     { data: 'maximum_capacity' },
+                    { data: 'attendees' },
                     { data: 'id',
                         render: function(data,type,row){
                             
                             action_buttons = `
-                                <a href="" class="btn btn-sm btn-a">View</a>
-                                <a href="" class="btn btn-sm btn-primary">Attendies ${row.attendies}</a>
-                                <a href="create.php?action=update&event_id=${data}" class="btn btn-sm btn-warning">Update</a>
+                                <button class="btn btn-sm btn-primary view_attendee" data-target-id="${data}">View/Downlaod Attendees</button>
+                                <a href="create.php?action=update&event_id=${data}" class="btn btn-sm btn-warning">View/Update</a>
                                 <button class="btn btn-sm btn-danger delete-btn" data-target-table="events" data-target-id="${data}" data-target-msg="Event" data-delete-img="${row.featured_image}">Delete</button>
                             `;
 
@@ -107,6 +123,21 @@
                 }
 
             });
+
+            $(document).on('click','.view_attendee',function(){
+                preloader_start('Please Wait...');
+                event_id = $(this).data('target-id');
+                $('.modal-dynamic-content').load('../core/event_attendees.php?event_id='+event_id,function(){
+                    
+                    preloader_end();
+                });
+                $('#attendee_modal').modal('show');
+            });
+            $('modal_close').click(function(){
+                $('.modal-dynamic-content').html("");
+            });
+
+
         });
 
 
