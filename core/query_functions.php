@@ -27,10 +27,20 @@ function delete_data($table_name,$table_field,$table_value){
 }
 
 // Fetch Data by Relation
-function relational_data($main_table,$main_table_filed,$relation_table,$relation_value,$limit=null,$single_field=null,$single_value=null){
-    if($limit != null){
-        $limit = "LIMIT $limit";
+function relational_data($main_table,$main_table_filed,$relation_table,$relation_value,$limit=null,$single_field=null,$single_value=null,$paginate=null,$page=null){
+
+    $limit_query = $limit != null ? "LIMIT $limit" : null;
+    
+    if($paginate == true){
+        
+        $current_page = $page != null ? $page : 1;
+        $items_per_page = $limit ? $limit : 10; 
+        $offset = ( $current_page - 1 )* $items_per_page; 
+        $paginate_query = "OFFSET $offset";
+    }else{
+        $paginate_query = null;
     }
+
     if($single_field != null && $single_value != null){
         $single_target = "WHERE `$single_field` = '$single_value'";
     }else{
@@ -42,7 +52,7 @@ function relational_data($main_table,$main_table_filed,$relation_table,$relation
         INNER JOIN `$relation_table` AS relation
         ON main.$main_table_filed = relation.id
         $single_target
-        ORDER BY main.id DESC $limit
+        ORDER BY main.id DESC $limit_query $paginate_query
     ";
     return mysqli_query(con_global(),$relational_join_query);
 }

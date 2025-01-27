@@ -51,40 +51,101 @@
     <section class="event-section section-padding" id="events">
         <div class="container">
             <h3 class="section-heading text-center fw-semi-bold color-a">Latest Events</h3>
-            <div class="row row-gap-4">
-                <?php while($all_event = mysqli_fetch_assoc($all_event_homepage)){ ?> 
-                
-                    <div class="col-lg-4">
-                        <div class="box">
-                            <a href="view_event.php?name=<?= $all_event['slug'] ?>">
-                                <div class="event-image">
-                                    <img src="uploads/<?= $all_event['featured_image'] ?>" class="w-100" alt="Event Image">
-                                </div>
-                                <div class="event-detail p-3">
-                                    <ul class="ps-0 d-flex flex-wrap gap-3">
-                                        <li class="d-flex align-items-center column-gap-2 fw-semi-bold color-a">
-                                            <img src="./assets/img/icons/calendar-con.webp" alt="Calender Icon"> <?= date('d M, Y',strtotime($all_event['event_date'])) ?>
-                                        </li>
-                                        <li class="d-flex align-items-center column-gap-2 fw-semi-bold color-a">
-                                            <img src="./assets/img/icons/user-icon.webp" alt="Calender Icon"> <?= $all_event['name'] ?>
-                                        </li>
-                                    </ul>
-                                    <h5 class="py-3 color-black"><?= minimise_title($all_event['title']) ?></h5>
-                                    <a href="view_event.php?name=<?= $all_event['slug'] ?>" class="btn btn-a-outline">Read More</a>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                <?php } ?>
-
-
-            </div>
-            <div class="text-center mt-4 pt-4">
-                <a href="events.php" class="btn btn-a">View All Events</a>
+            <div class="row row-gap-4" id="events-container"></div>
+            <div class="text-center mt-4 pt-4" id="pagination_container">
+                <button class="btn btn-a view_more_botton" data-page="2">View More</button>
             </div>
         </div>
     </section>
 
+
+    <!-- Catch Data With Ajax -->
+    <script>
+        $(document).ready(function () {
+            
+            function draw_events(events){
+                const container = $('#events-container');
+                events.forEach(event => {
+                   container.append(`
+                        <div class="col-lg-4">
+                            <div class="box">
+                                <a href="view_event.php?name=${event.slug}">
+                                    <div class="event-image">
+                                        <img src="uploads/${event.featured_image}" class="w-100" alt="Event Image">
+                                    </div>
+                                    <div class="event-detail p-3">
+                                        <ul class="ps-0 d-flex flex-wrap gap-3">
+                                            <li class="d-flex align-items-center column-gap-2 fw-semi-bold color-a">
+                                                <img src="./assets/img/icons/calendar-con.webp" alt="Calendar Icon">
+                                                ${new Date(event.event_date).toLocaleDateString('en-US', {
+                                                    day: '2-digit',
+                                                    month: 'short',
+                                                    year: 'numeric'
+                                                })}
+                                            </li>
+                                            <li class="d-flex align-items-center column-gap-2 fw-semi-bold color-a">
+                                                <img src="./assets/img/icons/user-icon.webp" alt="User Icon">
+                                                ${event.name}
+                                            </li>
+                                        </ul>
+                                        <h5 class="py-3 color-black">${event.title}</h5>
+                                        <a href="view_event.php?name=${event.slug}" class="btn btn-a-outline">Read More</a>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    `)
+                });
+            }
+
+            function call_ajax(requested_datas){
+                $.ajax({
+                    url: 'api/fetch_data.php',
+                    type: 'GET',
+                    data: requested_datas,
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response.data);
+                        if (response.data.events && response.data.events.length > 0) {
+                            draw_events(response.data.events); 
+                        }
+                        if (response.data.events.length < requested_datas.limit) {
+                            $('.view_more_button').hide(); 
+                        }
+                        
+                    },
+                    error: function (error) {
+                        console.error('Error fetching Datas:', error);
+                    }
+                });
+            }
+
+            $(window).on('load',function(){
+               
+                call_ajax({
+                    table_name:'events',
+                    request_for:'all_data',
+                    limit: 1,
+                    paginate:true,
+                    page:1
+
+                });
+                
+                
+            });
+            $('.view_more_botton').click(function(){
+                let page = $(this).data('page');
+                call_ajax({
+                    table_name:'events',
+                    request_for:'all_data',
+                    limit: 1,
+                    paginate:true,
+                    page:page
+
+                });
+                $(this).data('page', page + 1);
+            });
+        });
+    </script>
 
 <?php require_once('includes/frontend/footer.php'); ?>
