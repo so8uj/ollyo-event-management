@@ -22,7 +22,17 @@ if(isset($_GET['request_for']) && isset($_GET['table_name'])){
         $get_events = relational_data('events','created_by','users','name',$limit,null,null,$paginate,$page);
         
         $data = [];
-        $data['total_data'] = count_data($table_name);
+        
+        $total_number_of_rows = intval(count_data($table_name));
+
+        if($paginate != null){
+            $page_data = $page * $limit;
+            if($total_number_of_rows <= $page_data){
+                $data['paginate_button'] = false;
+            }else{
+                $data['paginate_button'] = true;
+            }
+        }
 
         if(mysqli_num_rows($get_events)>0){
             while($get_event = mysqli_fetch_assoc($get_events)){

@@ -17,6 +17,7 @@
 body {
     font-family: "Inter", serif;
     min-height: 100vh;
+    background: #ecebeb;
 }
 
 ul {
@@ -46,7 +47,6 @@ a {
 
 .btn-a-outline:hover {
     background: var(--color-a);
-    ;
     color: var(--color-black);
 }
 
@@ -106,69 +106,20 @@ a {
 }
 
 /* Banner Area */
-.banner-area {
-    height: 100vh;
-    background: linear-gradient(#00000090, #00000090), url('../img/banner-bg.jpg') center / cover no-repeat;
+.custom-card{
+    box-shadow: 0 0 25px -15px #000000ad;
+    border-radius: 16px;
+    padding: 40px;
+    background: #f7f7f7;
 }
 
-.banner-area .custom-search-input {
-    width: 80%;
+.page-breadcrumb {
+    padding-bottom: 148px;
 }
-
-.banner-area .btn {
-    width: 18%;
-}
-
-.banner-content {
-    margin-top: -89px;
-}
-
-.banner-content h1 {
-    font-size: 72px;
-    text-align: center;
-}
-
-.banner-scroll-part {
-    width: 200px;
-    background: var(--color-a);
-    height: 200px;
-    border-radius: 200px;
-}
-
-.banner-scroll-part svg {
-    fill: currentColor;
-    height: auto;
-    transform-origin: center;
-    width: 180px;
-    animation: circle-animation 20s linear infinite;
-}
-
-.banner-scroll-part svg text {
-    color: var(--color-black);
-}
-
-
-@keyframes circle-animation {
-    from {
-        rotate: 0deg;
-    }
-
-    to {
-        rotate: 360deg;
-    }
-}
-
-
-.scroll_arrow-acon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 50px;
-    transform: translate(-50%, -50%);
-}
-
-
 /* Event Section */
+.event-section{
+    margin-top: -250px;
+}
 .event-detail img {
     width: 25px;
 }
