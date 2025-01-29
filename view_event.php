@@ -13,7 +13,7 @@
         $remaining = $single_event['maximum_capacity'] - $registered;
     ?>
 
-        <section class="page-breadcrumb py-5 bg-a">
+        <section class="page-breadcrumb single-event-page pt-5 bg-a">
             <div class="container">
                 <h3 class="fs-1 pt-4 fw-semi-bold color-black"><?= $single_event['title'] ?></h3>
                 <div class="event-detail pt-3">
@@ -28,8 +28,9 @@
                 </div>
             </div>
         </section>
+
         <!-- Events Part -->
-        <section class="event-section py-5" id="events">
+        <section class="event-section single-event pt-5" id="events">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -97,7 +98,7 @@
         <section class="bg-a section-padding">
             <div class="container text-center">
                 <h3 class="fs-1 fw-semi-bold mb-4 color-black">No Event Found!</h3>
-                <a href="events.php" class="btn btn-dark">View All Events</a>
+                <a href="index.php" class="btn btn-dark">View All Events</a>
             </div>
         </section>
     <?php } ?>

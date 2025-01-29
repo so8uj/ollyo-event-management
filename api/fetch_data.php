@@ -16,13 +16,24 @@ if(isset($_GET['request_for']) && isset($_GET['table_name'])){
     $paginate = isset($_GET['paginate']) ? $_GET['paginate'] : null;
     $page = isset($_GET['page']) ? $_GET['page'] : null;
 
+
+    $data = [];
+
+    if(isset($_GET['search_field'])){
+        $search_field = $_GET['search_field'];
+        $search_value= $_GET['search_value'];
+        $data['search'] = true;
+        $data['search_with'] = $search_value;
+    }else{
+        $search_field = null;
+        $search_value=null;
+        $data['search'] = false;
+    }
+
     // Get All Data
     if($_GET['request_for'] == 'all_data'){
 
-        $get_events = relational_data('events','created_by','users','name',$limit,null,null,$paginate,$page);
-        
-        $data = [];
-        
+        $get_events = relational_data('events','created_by','users','name',$limit,null,null,$paginate,$page,$search_field,$search_value);      
         $total_number_of_rows = intval(count_data($table_name));
 
         if($paginate != null){
@@ -41,8 +52,6 @@ if(isset($_GET['request_for']) && isset($_GET['table_name'])){
         }
 
         echo make_response('success',$data);
-    }else{
-
     }
 }else{
     // Give Emplty Success Response

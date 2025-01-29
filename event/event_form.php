@@ -3,19 +3,19 @@
             <div class="col-lg-7">
                 <div class="mb-3 form-group">
                     <label for="title" class="form-label">Event Title</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?= $form_type == 'update' ? $single_event['title'] : '' ?>" placeholder="title" >
+                    <input type="text" class="form-control" id="title" name="title" value="<?= $form_type == 'update' ? $single_event['title'] : '' ?>" placeholder="title" required>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="description" class="form-label">Event Description</label>
-                    <textarea name="description" class="form-control editor" rows="5" id="description"><?= $form_type == 'update' ? $single_event['description'] : '' ?></textarea>
+                    <textarea name="description" class="form-control editor" rows="5" id="description" required><?= $form_type == 'update' ? $single_event['description'] : '' ?></textarea>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="maximum_capacity" class="form-label">Registration Maximum Maximum Capacity</label>
-                    <input type="number" class="form-control" id="maximum_capacity" name="maximum_capacity" value="<?= $form_type == 'update' ? $single_event['maximum_capacity'] : '' ?>" placeholder="0" >
+                    <input type="number" class="form-control" id="maximum_capacity" name="maximum_capacity" value="<?= $form_type == 'update' ? $single_event['maximum_capacity'] : '' ?>" placeholder="0" required>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="date" class="form-label">Event Date</label>
-                    <input type="date" class="form-control" id="event_date" value="<?= $form_type == 'update' ? $single_event['event_date'] : '' ?>" name="event_date" placeholder="0" >
+                    <input type="date" class="form-control" id="event_date" value="<?= $form_type == 'update' ? $single_event['event_date'] : '' ?>" name="event_date" placeholder="0" required>
                 </div>
             </div>
             <div class="col-lg-5">

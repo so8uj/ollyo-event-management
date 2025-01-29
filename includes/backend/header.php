@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <!-- Theme Style CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css?<?= time() ?>">
 
 
 </head>
@@ -49,14 +49,14 @@
     <main>
        <div class="dashboard-header p-3 bg-a">
            <div class="container-fluid">
-                <div class="d-flex column-gap-5 align-items-center">
+                <div class="d-flex column-gap-5 align-items-center flex-wrap row-gap-3">
                     <div class="logo">
                         <a class="navbar-brand" href="/ollyo-event-management">
                             <img src="../assets/img/ollyo-event-management.webp" width="200px" alt="Ollyo Event Management">
                         </a>
                     </div>
-                    <div>
-                        <a href="../index.php" target="_blank" class="btn btn-light">Website</a>
+                    <div class="website_button">
+                        <a href="../index.php" target="_blank" class="btn btn-light website_button">Website</a>
                     </div>
                 </div>
            </div>
@@ -66,5 +66,5 @@
                 <?php require_once('sidebar.php'); ?>
 
                 <div class="col-lg-10">
-                    <div class="main-content pt-4 ps-3">
+                    <div class="main-content pt-4 ps-0 ps-lg-3">
                         

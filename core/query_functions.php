@@ -27,7 +27,8 @@ function delete_data($table_name,$table_field,$table_value){
 }
 
 // Fetch Data by Relation
-function relational_data($main_table,$main_table_filed,$relation_table,$relation_value,$limit=null,$single_field=null,$single_value=null,$paginate=null,$page=null){
+function relational_data($main_table,$main_table_filed,$relation_table,$relation_value,$limit=null,$single_field=null,$single_value=null,$paginate=null,$page=null,$search_field=null,
+$search_value=null){
 
     $limit_query = $limit != null ? "LIMIT $limit" : null;
     
@@ -46,12 +47,19 @@ function relational_data($main_table,$main_table_filed,$relation_table,$relation
     }else{
         $single_target = null;
     }
+
+    if($search_field != null && $search_value != null){
+        $search_target = "WHERE  `$search_field` LIKE '%$search_value%'";
+    }else{
+        $search_target = null;
+    }
+
     $relational_join_query = "
         SELECT main.*, relation.name 
         FROM `$main_table` AS main
         INNER JOIN `$relation_table` AS relation
         ON main.$main_table_filed = relation.id
-        $single_target
+        $single_target $search_target
         ORDER BY main.id DESC $limit_query $paginate_query
     ";
     return mysqli_query(con_global(),$relational_join_query);

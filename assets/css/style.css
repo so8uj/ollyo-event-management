@@ -92,15 +92,6 @@ a {
     width: 200px;
 }
 
-.custom-nav .navbar-brand,
-.custom-nav .menu-buttons {
-    width: 25%;
-}
-
-.custom-nav .menu-itmes {
-    width: 50%;
-}
-
 .custom-nav .nav-item:not(:last-child) {
     margin-right: 20px;
 }
@@ -111,10 +102,30 @@ a {
     border-radius: 16px;
     padding: 40px;
     background: #f7f7f7;
+    overflow: hidden;
 }
+.event-wrapper-loader {
+    height: 100%;
+    width: 100%;
+    background: #b7b7b79e;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    top: 0;
+    opacity: 0;
+}
+.event-wrapper-loader.show-loader{
+    z-index: 1;
+    opacity: 1;
+    transition: .3s ease-out;
+} 
 
 .page-breadcrumb {
     padding-bottom: 148px;
+}
+.single-event-page{
+    padding-bottom: 248px;
 }
 /* Event Section */
 .event-section{
@@ -267,4 +278,46 @@ Dahboard CSS
     background-color: var(--color-a);
     border-color: var(--color-a);
     color: var(--color-white) !important;
+}
+
+@media screen and (max-width: 800px) {
+    .event-image img {
+        height:200px;
+    }
+    .event-table-wrapper{
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width: 600px) {
+    .section-heading {
+        font-size: 42px;
+    }
+    .footer-logo{
+        width: 250px;
+    }
+    .single-event{
+        margin-top: -180px;
+    }
+    .single-event-page {
+        padding-bottom: 170px;
+    }
+    .website_button{
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .event-image img {
+        height: 200px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .custom-nav .navbar-brand img{
+        width: 180px;
+    }
+    .event-image img {
+        height: 160px;
+    }
 }

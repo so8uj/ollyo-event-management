@@ -13,14 +13,17 @@
     } ?>
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body event-table-wrapper">
             <h3 class="mb-4"><?= $auth['role'] == 0 ? 'My' : 'All' ?> Events</h3>
-            <table id="eventsTable" class="display" style="width:100%">
+            <table id="events_table" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
                         <th>Featured Image</th>
+                        <?php if($auth['role'] == 1){ ?> 
+                            <th>Created By</th>
+                        <?php } ?>
                         <th>Date</th>
                         <th>Capacity</th>
                         <th>Attendees</th>
@@ -47,16 +50,15 @@
     <script src="../assets/js/preloader_middle_body.js"></script>
     <script>
         $(document).ready(function () {
-            
-            $('#eventsTable').DataTable({
+            $('#events_table').DataTable({
                 processing: true,
                 serverSide: false,
                 ajax: {
                     type: 'GET',
                     url: '../core/fetch_datatable.php',
                     data:{
-                        'table_name':'events',
-                        'type':'events'
+                        'type':'events',
+                        'table_name':'events'
                     }
                 },
                 order: [[0, 'desc']],
@@ -68,6 +70,7 @@
                             return "<img src='../uploads/"+data+"' class='img-thumbnail' width='100px' />";
                         } 
                     },
+                    <?= ($auth['role'] == 1) ? "{ data: 'name'}," : null ?>
                     { data: 'event_date' },
                     { data: 'maximum_capacity' },
                     { data: 'attendees' },
@@ -79,7 +82,6 @@
                                 <a href="create.php?action=update&event_id=${data}" class="btn btn-sm btn-warning">View/Update</a>
                                 <button class="btn btn-sm btn-danger delete-btn" data-target-table="events" data-target-id="${data}" data-target-msg="Event" data-delete-img="${row.featured_image}">Delete</button>
                             `;
-
                             return action_buttons;
                         }
                     }
@@ -123,7 +125,6 @@
                 }
 
             });
-
             $(document).on('click','.view_attendee',function(){
                 preloader_start('Please Wait...');
                 event_id = $(this).data('target-id');
@@ -139,12 +140,8 @@
 
 
         });
-
-
-        
     </script>
 
-    
 </div>
 
 

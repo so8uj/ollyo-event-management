@@ -21,11 +21,17 @@ $sl_no = 1;
     <span class="fs-6 fw-bold">Total Attendee: <?= count_data('event_registrations','event_id',$event_id); ?></span>
     <button class="btn btn-a" id="export_report_button" data-export-name="<?= $event['title']; ?>">Downlaod Report</button> 
 </div>
+
+
+
+<input type="text" class="form-control mb-3" id="search_input" placeholder="Search attenedee by Name or Email">
+
+
 <table class="table table-sm table-bordered" id="attendee_table">
     <tr>
         <th colspan="4" class="text-center">    
             <?= $event['title'] ?> <br>
-            Attendiee Lists
+            Attendee Lists
         </th>
     </tr>
     
@@ -35,10 +41,10 @@ $sl_no = 1;
         <th>Email</th>
     </tr>
     <?php while($attendee = mysqli_fetch_assoc($all_attendees)){ ?>
-        <tr>
+        <tr class="attendee_row">
             <td><?= $sl_no ?></td>
-            <td colspan="2"><?= $attendee['name'] ?></td>
-            <td><?= $attendee['email'] ?></td>
+            <td class="attendee_name" colspan="2"><?= $attendee['name'] ?></td>
+            <td class="attendee_email"><?= $attendee['email'] ?></td>
         </tr>
     <?php $sl_no++; } ?>
 </table>
@@ -75,6 +81,23 @@ $sl_no = 1;
     $("#export_report_button").on("click", function () {
         var name = $(this).data('export-name');
         export_table_to_csv("attendee_table", name+"Attendee Lists.csv");
+    });
+
+    $('#search_input').keyup(function() {
+        var search_with = $(this).val().toLowerCase(); 
+        if(search_with != ''){
+            $('.attendee_row').each(function() {
+                var attendee_name = $(this).find('.attendee_name').text().toLowerCase();
+                var attendee_email = $(this).find('.attendee_email').text().toLowerCase();
+                if (attendee_name.includes(search_with) || attendee_email.includes(search_with)) {
+                    $(this).removeClass('d-none');
+                } else {
+                    $(this).addClass('d-none');
+                }
+            });
+        }else{
+            $('.attendee_row').removeClass('d-none');
+        };
     });
 
 
