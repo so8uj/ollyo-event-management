@@ -10,7 +10,7 @@
 
     $get_path = $_SERVER['REQUEST_URI'];
     $path = explode('/',$get_path);
-    $path = $path[2];
+    $path = $path[1]; // set 2 for Local
 
     $auth = $_SESSION['auth'];
 

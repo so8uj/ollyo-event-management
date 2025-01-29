@@ -21,6 +21,7 @@ if($_GET['type'] && $_GET['type'] == 'events'){
 
     while($row = mysqli_fetch_assoc($get_all_data)){
         $attendies = count_data('event_registrations','event_id',$row['id']);
+        $row['description'] = utf8_encode($row['description']);
         $row['attendees'] = $attendies;
         $data[] = $row;
     
@@ -50,5 +51,6 @@ $response = array(
     "aaData" => $data
 );
 
-echo json_encode($response);
+echo json_encode($response,JSON_UNESCAPED_UNICODE);
+
 exit;

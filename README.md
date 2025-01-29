@@ -45,6 +45,12 @@ core/dabatase.php
     $pass = "your database password";
     $db_name = "your database dabatase name";
 ```
+* If dashboard sidemenu not Active then 
+```
+Goto includes/backend/header.php 
+    $path = $path[1] // 1 for Live. 2 for local
+```
+
 #### Ready to Rock Now.
 
 ## Author
