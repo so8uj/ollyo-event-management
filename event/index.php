@@ -52,7 +52,7 @@
         $(document).ready(function () {
             $('#events_table').DataTable({
                 processing: true,
-                serverSide: false,
+                serverSide: true,
                 ajax: {
                     type: 'GET',
                     url: '../core/fetch_datatable.php',

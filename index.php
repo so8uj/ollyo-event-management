@@ -244,6 +244,7 @@
             });
 
         });
+        
     </script>
 
 <?php require_once('includes/frontend/footer.php'); ?>

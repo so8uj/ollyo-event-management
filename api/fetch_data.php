@@ -5,7 +5,7 @@ function make_response($status,$data){
         'status' => $status,
         'data' => $data,
     ];
-    return json_encode($response);
+    return json_encode($response,JSON_UNESCAPED_UNICODE);
 }
 
 include('../core/query_functions.php');
@@ -47,15 +47,18 @@ if(isset($_GET['request_for']) && isset($_GET['table_name'])){
 
         if(mysqli_num_rows($get_events)>0){
             while($get_event = mysqli_fetch_assoc($get_events)){
+                $get_event['description'] = utf8_encode($get_event['description']);
                 $data['events'][] = $get_event;
             }
         }
 
         echo make_response('success',$data);
+        exit;
     }
 }else{
     // Give Emplty Success Response
     echo make_response('success','API working!');
+    exit;
 }
 
 

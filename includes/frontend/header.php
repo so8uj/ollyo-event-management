@@ -39,7 +39,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg custom-nav justify-content-between">
 
-                <a class="navbar-brand" href="/ollyo-event-management">
+                <a class="navbar-brand" href="index.php">
                     <img src="./assets/img/ollyo-event-management.webp" alt="Ollyo Event Management">
                 </a>
 

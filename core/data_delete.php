@@ -25,5 +25,5 @@ $table_field = "id";
 delete_data($target_table,$table_field,$target_id);
 
 echo $target_id;
-
+exit;
 ?>

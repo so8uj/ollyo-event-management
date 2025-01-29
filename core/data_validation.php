@@ -73,12 +73,14 @@ function data_validation($data, $rules) {
     }
 
     return $errors;
+    exit;
 }
 
 
 function change_lebel_readable($label){
     $new_lebel = str_replace('_' ," ",$label);
     return ucwords(strtolower($new_lebel));
+    exit;
 
 }
 
@@ -88,5 +90,6 @@ function check_unique_field($table_name,$field,$value){
     $get_qunique_data = mysqli_query(con_global(), $check_unique_query);
     if(mysqli_num_rows($get_qunique_data) > 0){
         return true;
+        exit;
     }
 }

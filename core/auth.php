@@ -115,6 +115,7 @@ if(isset($_POST['catchRegisterData']) || isset($_POST['catchLoginData'])){
 
 }else{
     header('Location: ../login.php');
+    exit;
 }
 
 

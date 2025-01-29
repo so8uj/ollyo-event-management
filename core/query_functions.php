@@ -12,11 +12,13 @@ function con_global(){
 // Fetch All Data
 function get_all_data($table_name){
     return mysqli_query(con_global(),"SELECT * FROM `$table_name` ORDER BY `id` desc");
+    exit;
 }
 
 // Fetch Data by a specific filed
 function get_single_data($table_name,$table_field,$table_value){
     return mysqli_query(con_global(),"SELECT * FROM `$table_name` WHERE `$table_field` = '$table_value'");
+    exit;
 }
 
 
@@ -24,6 +26,7 @@ function get_single_data($table_name,$table_field,$table_value){
 function delete_data($table_name,$table_field,$table_value){
     mysqli_query(con_global(),"DELETE FROM `$table_name` WHERE `$table_field` = '$table_value'");
     return;
+    exit;
 }
 
 // Fetch Data by Relation
@@ -63,6 +66,7 @@ $search_value=null){
         ORDER BY main.id DESC $limit_query $paginate_query
     ";
     return mysqli_query(con_global(),$relational_join_query);
+    exit;
 }
 
 // Count Function
@@ -79,6 +83,7 @@ function count_data($table_name,$filed_name=null,$filed_value=null){
     }else{
         return 0;
     }
+    exit;
 }
 
 
