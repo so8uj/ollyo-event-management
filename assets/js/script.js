@@ -57,7 +57,7 @@ $(document).ready(function(){
                         window.location.reload();
                     });
                 }else{
-                    $(target_form).prepend("<div class='alert alert-success'>"+res_json.msg+"</div>")
+                    $('.alert-container').html("<div class='alert alert-success'>"+res_json.msg+"</div>")
                     formElement.reset();
                 }
                 

@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="row row-gap-4" id="events-container"></div>
-                <div class="text-center mt-4 pt-4" id="pagination_container">
+                <div class="text-center mt-4 pt-4 d-none" id="pagination_container">
                     <button class="btn btn-a view_more_botton" data-page="2">View More</button>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         $(document).ready(function () {
             
             function minimise_title(title){
-                if (title.length > 40) {
+                if (title.length > 36) {
                     return title.substring(0, 35) + '...';
                 } else {
                     return title;
@@ -88,7 +88,6 @@
 
             function draw_events(events,search=false,search_with=null){
                 
-                
                 const container = $('#events-container');
                 if(search===true){
                     container.html(`
@@ -97,6 +96,7 @@
                     $('#event_by_filter').html(`<option value="default">Event By</option>`);
                 }
                 if(events){
+                    $('#pagination_container').removeClass('d-none');
                     events.forEach(event => {
                        container.append(`
                             <div class="col-lg-4 event-box" data-event-by="${event.name}">
@@ -150,7 +150,7 @@
                     data: requested_datas,
                     dataType: 'json',
                     success: function (response) {
-                        // console.log(response.data);
+                        console.log(response.data);
                         if(response.data.events){
                             if (response.data.events && response.data.events.length > 0) {
                                 draw_events(response.data.events); 
@@ -158,6 +158,11 @@
                             if (response.data.paginate_button === false || response.data.events.length < requested_datas.limit) {
                                 $('.view_more_botton').hide(); 
                             }
+                        }else{
+                            $('#pagination_container').addClass('d-none');
+                            $('#events-container').append(`
+                                <p class="text-danger">No Event Found <a href="#"  class="btn-link" onclick="location.reload()">Refresh Page</a></p>
+                            `);
                         }
                         if(response.data.search){
                             draw_events(response.data.events,response.data.search,response.data.search_with); 
@@ -174,7 +179,7 @@
                 call_ajax({
                     table_name:'events',
                     request_for:'all_data',
-                    limit: 1,
+                    limit: 6,
                     paginate:true,
                     page: 1,
                 });
@@ -187,7 +192,7 @@
                 call_ajax({
                     table_name:'events',
                     request_for:'all_data',
-                    limit: 1,
+                    limit: 6,
                     paginate:true,
                     page:page
 
@@ -220,9 +225,9 @@
 
             $('#sort_events').change(function(){
                 if($(this).val() == 'asc'){
-                    $('#events-container').addClass('flex-row-reverse justify-content-end');
+                    $('#events-container').addClass('flex-row-reverse justify-content-end flex-wrap-reverse');
                 }else{
-                    $('#events-container').removeClass('flex-row-reverse justify-content-end');
+                    $('#events-container').removeClass('flex-row-reverse justify-content-end flex-wrap-reverse');
                 }
             });
             $('#event_by_filter').change(function(){

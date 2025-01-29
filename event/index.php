@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-body event-table-wrapper">
             <h3 class="mb-4"><?= $auth['role'] == 0 ? 'My' : 'All' ?> Events</h3>
-            <table id="events_table" class="display nowrap" style="width:100%">
+            <table id="events_table" class="display wrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>

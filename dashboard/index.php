@@ -15,7 +15,7 @@
                         <div class="card text-bg-info mb-3">
                             <div class="card-body">
                                 <h5 class="card-title">Total Users</h5>
-                                <h2><?= count_data('events') - 1 ?></h2>
+                                <h2><?= count_data('users') - 1 ?></h2>
                             </div>
                         </div>
                     </div>
@@ -33,21 +33,23 @@
                 </div>
 
                 <?php if($auth['role'] == 1){ ?> 
-                    <div class="card">
-                        <div class="card-body">
-                        <div class="card-body event-table-wrapper">
-                            <h3 class="mb-4">All Users</h3>
-                            <table id="users_table" class="display nowrap" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Role</th>
-                                        <th>Registration Date</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="card-body event-table-wrapper">
+                                <h3 class="mb-4">All Users</h3>
+                                <table id="users_table" class="display nowrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Role</th>
+                                            <th>Registration Date</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -70,7 +72,7 @@
                     type: 'GET',
                     url: '../core/fetch_datatable.php',
                     data:{
-                        'type':'all',
+                        'type':'users',
                         'table_name':'users',
                     }
                 },

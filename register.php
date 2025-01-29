@@ -17,6 +17,7 @@
                         <div class="card-body p-4">
                             <h2 class="fw-semi-bold">Regsiter Here</h2>
                             <form id="register_form" class="pt-4">
+                                <div class="alert-container"></div>
                                 <div class="mb-3 form-group">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="name" required>

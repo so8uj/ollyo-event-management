@@ -92,6 +92,16 @@ a {
     width: 200px;
 }
 
+
+.custom-nav .navbar-brand,
+.custom-nav .menu-buttons {
+    width: 25%;
+}
+
+.custom-nav .menu-itmes {
+    width: 50%;
+}
+
 .custom-nav .nav-item:not(:last-child) {
     margin-right: 20px;
 }

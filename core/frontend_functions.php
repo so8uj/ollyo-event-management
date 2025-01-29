@@ -2,9 +2,17 @@
 
 include('query_functions.php');
 
-// $all_events = get_all_data('events');
-$all_event_homepage = relational_data('events','created_by','users','name',3);
-$all_events = relational_data('events','created_by','users','name');
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$view_limit = 6;
+$search = isset($_GET['search']) ? $_GET['search'] : null;
+if($search != null){
+    $view_limit = 100;
+    $all_events = relational_data('events','created_by','users','name',$view_limit,null,null,false,$current_page,'title',$search);
+}else{
+    $all_events = relational_data('events','created_by','users','name',$view_limit,null,null,1,$current_page);
+}
+
+$count_events = count_data('events');
 
 if($page === 'view_event.php'){
     if(isset($_GET['name'])){
@@ -18,8 +26,8 @@ if($page === 'view_event.php'){
 
 // Minimise Title
 function minimise_title($title){
-    if (strlen($title) > 40){
-        return $new_title = substr($title, 0, 39) . '...';
+    if (strlen($title) > 36){
+        return $new_title = substr($title, 0, 35) . '...';
     }else{
         return $title;
     }

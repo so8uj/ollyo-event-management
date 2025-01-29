@@ -17,6 +17,7 @@
                         <div class="card-body p-4">
                             <h2 class="fw-semi-bold">Login</h2>
                             <form id="login_form" class="pt-4">
+                                <div class="alert-container"></div>
                                 <div class="mb-3 form-group">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="username" name="username" placeholder="username" required>

@@ -44,7 +44,34 @@
                 </a>
 
 
-                <div class="menu-buttons d-flex justify-content-end column-gap-2">
+                
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center menu-itmes" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link hover-color-a fw-bold fs-5 <?= $page == 'index.php' ? 'color-a' : '' ?>" href="index.php">Home with API</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hover-color-a fw-bold fs-5 <?= $page == 'home-raw-data.php' ? 'color-a' : '' ?>" href="home-raw-data.php">Home with Raw Data</a>
+                        </li>
+                        <li>
+                            <div class="d-flex d-lg-none column-gap-2">
+                                <?php if(isset($_SESSION['auth'])){ ?> 
+                                    <a href="dashboard/" class="btn btn-a" target="_blank">Dasboard</a>
+                                <?php }else{ ?> 
+                                    <a href="login.php" class="btn btn-a" >Login</a>
+                                    <a href="register.php" class="btn btn-a-outline" >Register</a>
+                                <?php } ?>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-buttons d-none d-lg-flex justify-content-end column-gap-2">
                     <?php if(isset($_SESSION['auth'])){ ?> 
                         <a href="dashboard/" class="btn btn-a" target="_blank">Dasboard</a>
                     <?php }else{ ?> 

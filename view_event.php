@@ -103,6 +103,6 @@
         </section>
     <?php } ?>
 
-    
+    <br><br><br>
 
 <?php require_once('includes/frontend/footer.php'); ?>
