@@ -37,7 +37,7 @@ This is a simple, web-based event management system that allows users to registe
 https://github.com/so8uj/ollyo-event-management.git
 ```
 * Upload the Ripository in your Server/Localhost
-* Upload the datase.sql in your databse
+* Upload the datase.sql in your database
 * Goto core/dabatase.php and change Database Credentials to your Database Credentials
 ```
 core/dabatase.php
@@ -49,7 +49,7 @@ core/dabatase.php
 
 ## Author
 #### Mohammad Sobuj 
-Email: [developersobuj@gmail.com](mailto:developersobuj@gmail.com)
-Linkedin: [https://www.linkedin.com/in/so8uj-/](https://www.linkedin.com/in/so8uj-/)
+* Email: [developersobuj@gmail.com](mailto:developersobuj@gmail.com)
+* Linkedin: [https://www.linkedin.com/in/so8uj-/](https://www.linkedin.com/in/so8uj-/)
 
 ### Feel free to ask me anything!
