@@ -8,7 +8,7 @@ This is a simple, web-based event management system that allows users to registe
 
 ## Features
 * Two Homepage one with API and other with PHP RAW data from database.
-* Search, Filter and Group by event ower/organization.
+* Paginated Data with Search, Filter and Group by event owner.
 * View Event Details with Avaiable Event Slots 
 * Authentication using secure password hasing 
 *  Event Attendee Registration
