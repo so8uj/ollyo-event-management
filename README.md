@@ -34,7 +34,7 @@ This is a simple, web-based event management system that allows users to registe
 
 * Download or Clone  the Repository
 ```
-https://github.com/so8uj/ollyo-event-management.git
+git clone https://github.com/so8uj/ollyo-event-management.git
 ```
 * Upload the Ripository in your Server/Localhost
 * Upload the datase.sql in your database
