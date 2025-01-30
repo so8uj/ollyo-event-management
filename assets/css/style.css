@@ -141,6 +141,11 @@ a {
 .event-section{
     margin-top: -250px;
 }
+h5.event_title {
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
 .event-detail img {
     width: 25px;
 }
@@ -297,6 +302,10 @@ Dahboard CSS
     .event-table-wrapper{
         overflow-x: scroll;
     }
+    h5.event_title{
+        display: block;
+        height: unset;
+    }
 }
 @media screen and (max-width: 600px) {
     .section-heading {
@@ -321,6 +330,7 @@ Dahboard CSS
     .card-title{
         font-size: 14px;
     }
+    
 }
 
 @media screen and (max-width: 500px) {
