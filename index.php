@@ -120,7 +120,7 @@
                                                     ${event.name}
                                                 </li>
                                             </ul>
-                                            <h5 class="py-3 color-black">${minimise_title(event.title)}</h5>
+                                            <h5 class="py-3 color-black event_title">${minimise_title(event.title)}</h5>
                                             <a href="view_event.php?name=${event.slug}" class="btn btn-a-outline">Read More</a>
                                         </div>
                                     </a>
@@ -150,7 +150,6 @@
                     data: requested_datas,
                     dataType: 'json',
                     success: function (response) {
-                        console.log(response.data);
                         if(response.data.events){
                             if (response.data.events && response.data.events.length > 0) {
                                 draw_events(response.data.events); 
