@@ -4,7 +4,7 @@
                 <div class="col-lg-6">
                     <div class="footer-box">
                         <img src="./assets/img/ollyo-event-management.webp" class="footer-logo" alt="Footer Logo">
-                        <p class="mt-4 fs-5">Management Project from Ollyo for an Interview Task.</p>
+                        <p class="mt-4 fs-5">This is a Simple Ollyo Event Management Task <br> for the job post of PHP Developer.</p>
                     </div>
                 </div>
                 <div class="col-lg-3">
