@@ -1,4 +1,4 @@
-![My Profile Picture](https://oem.watermarkbd.com/homepage_sample.png)
+![My Profile Picture](https://oem.watermarkbd.com/homepage_sample_updated.png)
 
 # Ollyo Event Management
 This is a Simple Ollyo Event Management Task for the job post of PHP Developer.
