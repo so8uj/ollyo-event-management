@@ -59,8 +59,8 @@
         $(document).ready(function () {
             
             function minimise_title(title){
-                if (title.length > 36) {
-                    return title.substring(0, 35) + '...';
+                if (title.length > 40) {
+                    return title.substring(0, 39) + '...';
                 } else {
                     return title;
                 }            
