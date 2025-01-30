@@ -1,6 +1,6 @@
 <footer class="section-padding main-footer">
         <div class="container">
-            <div class="row">
+            <div class="row row-gap-3 row-gap-lg-0">
                 <div class="col-lg-6">
                     <div class="footer-box">
                         <img src="./assets/img/ollyo-event-management.webp" class="footer-logo" alt="Footer Logo">
