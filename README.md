@@ -53,9 +53,40 @@ Goto includes/backend/header.php
 
 #### Ready to Rock Now.
 
+## API Documentation
+
+### Endpoints
+
+| Environment | Endpoint URL |
+|------------|-------------|
+| **Internal**  | `/api/fetch_data.php` |
+| **Extranal**   | `https://oem.watermarkbd.com/api/fetch_data.php` |
+
+### Request Details
+
+| Method  | Description             |
+|---------|-------------------------|
+| `GET`   | Fetches data            |
+
+### Request Parameters
+
+| Parameter    | Type     | Required | Description                     |
+|-------------|---------|----------|---------------------------------|
+| `table_name` | String |  Yes   |   `events`                        |
+| `request_for` | String  | Yes   | `all_data`           |
+| `limit`     | Integer  |  Yes    | Number of results to return     |
+| `paginate` | Boolean | Optional| `true` or `false` Enable pagination  |
+| `page` | Integer | Optional| Pagination page number  |
+| `search_field` | String | Optional  | Default: `null`, Enable Search with your expected field |
+| `search_value` | String | Optional| Default: `null`, Search Value  |
+
 ## Author
 #### Mohammad Sobuj 
 * Email: [developersobuj@gmail.com](mailto:developersobuj@gmail.com)
 * Linkedin: [https://www.linkedin.com/in/so8uj-/](https://www.linkedin.com/in/so8uj-/)
 
 ### Feel free to ask me anything!
+
+
+
+

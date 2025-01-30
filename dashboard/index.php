@@ -5,7 +5,7 @@
 
 <div class="event-container">
     <div class="card">
-        <div class="card-body p-5">
+        <div class="card-body p-2 p-lg-5">
             <h2>Welcome, <?= $auth['name'] ?></h2>
 
             <div class="row mt-4">
@@ -35,7 +35,6 @@
                 <?php if($auth['role'] == 1){ ?> 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-body">
                             <div class="card-body event-table-wrapper">
                                 <h3 class="mb-4">All Users</h3>
                                 <table id="users_table" class="display nowrap" style="width:100%">

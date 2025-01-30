@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 29, 2025 at 06:29 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Jan 30, 2025 at 09:40 AM
+-- Server version: 5.7.44
+-- PHP Version: 8.1.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `oem_task`
+-- Database: `watermar_oem`
 --
 
 -- --------------------------------------------------------
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `featured_image` varchar(255) NOT NULL DEFAULT 'default_image.jpg',
   `maximum_capacity` int(11) NOT NULL,
   `created_by` int(11) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `event_date` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
@@ -45,9 +45,9 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `title`, `description`, `featured_image`, `maximum_capacity`, `created_by`, `slug`, `event_date`, `created_at`) VALUES
 (1, 'Artificial Intelligence & Machine Learning', '&lt;div&gt;&lt;b&gt;1. AI Convergence Summit:&amp;nbsp;&lt;/b&gt;A conference exploring the latest advancements in AI, deep learning, and neural networks.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;2. Machine Learning Frontiers:&lt;/b&gt;&amp;nbsp; A gathering of ML enthusiasts discussing applications in automation, healthcare, and finance.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;3. Neural Nexus:&lt;/b&gt; An event focused on AI ethics, neural networks, and the future of intelligent computing.&lt;/div&gt;', 'artificial-intelligence-machine-learning-1738165746.jpg', 50, 4, 'artificial-intelligence-machine-learning', '2025-02-06', '2025-01-29 15:49:06'),
-(2, 'Cybersecurity & Blockchain', '&lt;p&gt;&lt;b&gt;1. CyberShield Conference&lt;/b&gt; – A cybersecurity event addressing the latest trends, threats, and solutions in digital security.&lt;/p&gt;&lt;p&gt;&lt;b&gt;2. Blockchain Revolution Expo&lt;/b&gt; – A conference on blockchain technology, smart contracts, and decentralized finance (DeFi).&lt;/p&gt;&lt;p&gt;&lt;b&gt;3. Hacker&#039;s Haven&lt;/b&gt; – An ethical hacking and cybersecurity challenge event for professionals and students.&lt;/p&gt;', 'cybersecurity-blockchain-1738166010.jpg', 80, 3, 'cybersecurity-blockchain', '2025-02-08', '2025-01-29 15:53:30'),
-(3, 'Software Development & Engineering', '&lt;h3 class=&quot;&quot;&gt;CodeCrafters Summit – &lt;/h3&gt;&lt;p&gt;A meetup for software engineers to explore cutting-edge programming languages and development tools.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3 class=&quot;&quot;&gt;DevOps Nexus – &lt;/h3&gt;&lt;p&gt;An event focusing on DevOps methodologies, cloud infrastructure, and CI/CD pipelines.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3 class=&quot;&quot;&gt;Agile Innovators Forum – &lt;/h3&gt;&lt;p&gt;A deep dive into agile development, project management, and product lifecycle best practices.&lt;/p&gt;', 'software-development-engineering-1738166164.jpg', 75, 3, 'software-development-engineering', '2025-02-15', '2025-01-29 15:56:04'),
-(4, 'IoT & Smart Tech', '&lt;ol&gt;&lt;li&gt;Smart Cities Forum – A discussion on the integration of IoT, AI, and sustainable technologies in urban development.&lt;/li&gt;&lt;li&gt;Connected World Summit – A platform to explore the latest trends in IoT, 5G, and smart devices.&lt;/li&gt;&lt;li&gt;Autonomous Tech Symposium – A deep dive into self-driving cars, drones, and AI-powered automation.&lt;/li&gt;&lt;/ol&gt;', 'iot-smart-tech-1738166392.jpg', 100, 6, 'iot-smart-tech', '2025-02-11', '2025-01-29 15:59:52'),
+(2, 'Cybersecurity & Blockchain', '&lt;p&gt;&lt;b&gt;1. CyberShield Conference:&amp;nbsp;&lt;/b&gt;A cybersecurity event addressing the latest trends, threats, and solutions in digital security.&lt;/p&gt;&lt;p&gt;&lt;b&gt;2. Blockchain Revolution Expo:&amp;nbsp;&lt;/b&gt;&amp;nbsp;A conference on blockchain technology, smart contracts, and decentralized finance (DeFi).&lt;/p&gt;&lt;p&gt;&lt;b&gt;3. Hacker&#039;s Haven:&lt;/b&gt;&amp;nbsp;An ethical hacking and cybersecurity challenge event for professionals and students.&lt;/p&gt;', 'cybersecurity-blockchain-1738166010.jpg', 80, 1, 'cybersecurity-blockchain', '2025-02-08', '2025-01-29 15:53:30'),
+(3, 'Software Development & Engineering', '&lt;h3 class=&quot;&quot;&gt;CodeCrafters Summit:&lt;/h3&gt;&lt;p&gt;A meetup for software engineers to explore cutting-edge programming languages and development tools.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3 class=&quot;&quot;&gt;DevOps Nexus:&lt;/h3&gt;&lt;p&gt;An event focusing on DevOps methodologies, cloud infrastructure, and CI/CD pipelines.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3 class=&quot;&quot;&gt;Agile Innovators Forum:&lt;/h3&gt;&lt;p&gt;A deep dive into agile development, project management, and product lifecycle best practices.&lt;/p&gt;', 'software-development-engineering-1738166164.jpg', 75, 1, 'software-development-engineering', '2025-02-15', '2025-01-29 15:56:04'),
+(4, 'IoT & Smart Tech', '&lt;ol&gt;&lt;li&gt;Smart Cities Forum: A discussion on the integration of IoT, AI, and sustainable technologies in urban development.&lt;/li&gt;&lt;li&gt;Connected World Summit: A platform to explore the latest trends in IoT, 5G, and smart devices.&lt;/li&gt;&lt;li&gt;Autonomous Tech Symposium: A deep dive into self-driving cars, drones, and AI-powered automation.&lt;/li&gt;&lt;/ol&gt;', 'iot-smart-tech-1738166392.jpg', 100, 1, 'iot-smart-tech', '2025-02-11', '2025-01-29 15:59:52'),
 (5, 'FutureTech Expo 2025', '&lt;p&gt;FutureTech Expo 2025 is a premier global event that brings together tech enthusiasts, industry leaders, and innovators to explore the latest advancements in artificial intelligence, robotics, automation, and smart technology. Attendees will experience hands-on demonstrations, keynote sessions by leading tech visionaries, and panel discussions covering emerging trends such as quantum computing, augmented reality, and next-generation cybersecurity solutions. This event is a must-attend for startups, enterprises, and individuals looking to stay ahead in the ever-evolving world of technology.&lt;/p&gt;', 'futuretech-expo-2025-1738166654.jpg', 60, 6, 'futuretech-expo-2025', '2025-02-27', '2025-01-29 16:04:14'),
 (6, 'CyberDefend Conference', '&lt;p&gt;CyberDefend Conference is a high-profile cybersecurity event dedicated to tackling modern cyber threats, data breaches, and ethical hacking. Security professionals, IT experts, and government officials gather to discuss the latest trends in cybersecurity, including AI-driven security, blockchain for secure transactions, and zero-trust network strategies. Attendees will participate in live hacking demonstrations, in-depth workshops, and networking sessions aimed at strengthening global cyber resilience.&lt;/p&gt;', 'cyberdefend-conference-1738166761.jpg', 50, 3, 'cyberdefend-conference', '2025-02-22', '2025-01-29 16:06:01'),
 (7, 'CodeFest Hackathon', '&lt;p&gt;CodeFest Hackathon is a 48-hour coding challenge where developers, designers, and entrepreneurs come together to create innovative software solutions. Participants will form teams, collaborate on real-world problems, and present their final projects to a panel of expert judges. The event fosters creativity, teamwork, and problem-solving, with winning teams receiving cash prizes, mentorship opportunities, and potential funding from investors.&lt;/p&gt;', 'codefest-hackathon-1738166847.jpg', 70, 3, 'codefest-hackathon', '2025-02-21', '2025-01-29 16:07:27'),
@@ -72,7 +72,7 @@ INSERT INTO `events` (`id`, `title`, `description`, `featured_image`, `maximum_c
 (26, 'CyberSecurity Threat Intelligence Summit', '&lt;p&gt;This summit is designed for cybersecurity professionals, ethical hackers, and IT decision-makers who want to stay ahead of emerging threats. Sessions cover ransomware attacks, social engineering tactics, AI-driven security solutions, and cyber warfare trends. Attendees will participate in live threat analysis workshops, cybersecurity simulations, and discussions on building stronger defense strategies&lt;/p&gt;', 'cybersecurity-threat-intelligence-summit-1738169702.jpg', 380, 2, 'cybersecurity-threat-intelligence-summit', '2025-07-06', '2025-01-29 16:55:02'),
 (27, 'Digital Marketing & AI Conference', '&lt;p&gt;This conference is tailored for digital marketers, content creators, and AI-driven advertising professionals. The event covers SEO automation, AI-generated content, personalized marketing strategies, and the impact of big data on consumer behavior. Attendees will learn how to leverage AI tools to create highly targeted campaigns and improve customer engagement.&lt;/p&gt;', 'digital-marketing-ai-conference-1738169854.jpg', 220, 2, 'digital-marketing-ai-conference', '2025-06-18', '2025-01-29 16:57:34'),
 (28, 'Next-Gen Biometric Security Expo', '&lt;p&gt;This event highlights the latest trends in biometric authentication, including facial recognition, fingerprint scanning, and AI-powered identity verification. Experts from the security and fintech industries will discuss the role of biometrics in cybersecurity, banking, and border control. Live demonstrations and hands-on workshops will provide attendees with insights into the future of biometric security.&lt;/p&gt;', 'next-gen-biometric-security-expo-1738169959.jpg', 550, 2, 'next-gen-biometric-security-expo', '2025-09-23', '2025-01-29 16:59:19'),
-(29, 'Wearable Tech & Smart Gadgets Summit Test', '&lt;p&gt;Wearable Tech &amp;amp; Smart Gadgets Summit is an exclusive event for tech enthusiasts interested in smartwatches, fitness trackers, augmented reality glasses, and biometric devices. The event highlights AI-powered wearables, health-tracking innovations, and next-gen smart clothing. Attendees can explore new product launches, hear from leading gadget developers, and experience the future of wearable technology.&lt;/p&gt;', 'wearable-tech-smart-gadgets-summit-test-1738171523.jpg', 350, 4, 'wearable-tech-smart-gadgets-summit-test', '2025-02-09', '2025-01-29 17:01:39'),
+(29, 'Wearable Tech & Gadgets Summit', '&lt;p&gt;Wearable Tech &amp;amp; Smart Gadgets Summit is an exclusive event for tech enthusiasts interested in smartwatches, fitness trackers, augmented reality glasses, and biometric devices. The event highlights AI-powered wearables, health-tracking innovations, and next-gen smart clothing. Attendees can explore new product launches, hear from leading gadget developers, and experience the future of wearable technology.&lt;/p&gt;', 'wearable-tech-smart-gadgets-summit-test-1738171523.jpg', 350, 4, 'wearable-tech-smart-gadgets-summit-test', '2025-02-09', '2025-01-29 17:01:39'),
 (30, 'Web 3.0 & Decentralized Internet Summit', '&lt;p&gt;This event explores the next generation of the internet—Web 3.0—where decentralization, blockchain, and AI-driven applications are redefining how we interact online. Topics include decentralized applications (DApps), blockchain governance, NFT innovations, and data privacy in the new era of the internet. Attendees will engage with top blockchain developers, policymakers, and entrepreneurs leading the Web3 movement.&lt;/p&gt;', 'web-3-0-decentralized-internet-summit-1738170260.jpeg', 500, 2, 'web-3-0-decentralized-internet-summit', '2025-02-07', '2025-01-29 17:04:20');
 
 -- --------------------------------------------------------
@@ -86,8 +86,8 @@ CREATE TABLE `event_registrations` (
   `event_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -100,9 +100,9 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` tinyint(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `role` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`

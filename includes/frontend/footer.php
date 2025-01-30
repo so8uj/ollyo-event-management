@@ -11,7 +11,8 @@
                     <div class="footer-box">
                         <h4 class="fs-3 mb-4">Inportant Links</h4>
                         <ul class="ps-0">
-                            <li class="mb-2"><a href="events.php" class="hover-color-a fs-5 color-white">Events</a></li>
+                            <li class="mb-2"><a href="index.php" class="hover-color-a fs-5 color-white">Home with API</a></li>
+                            <li class="mb-2"><a href="home-raw-data.php" class="hover-color-a fs-5 color-white">Home with Raw Data</a></li>
                             <li class="mb-2"><a href="login.php" class="hover-color-a fs-5 color-white">Login</a></li>
                             <li ><a href="register.php" class="hover-color-a fs-5 color-white">Register</a></li>
                         </ul>
