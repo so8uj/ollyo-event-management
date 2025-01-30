@@ -34,7 +34,7 @@
                     <input type="hidden" name="event_from_action" value="<?= $form_type == 'add' ? 'add' : 'update' ?>">
 
                     <?php if($form_type == 'update'){ ?> 
-                        <input type="hidden" name="event_id" value="<?= $single_event['id'] ?>">
+                        <input type="hidden" name="event_id" value="<?= $form_type == 'update' ? $single_event['created_by'] : $auth['id']  ?>">
                         <input type="hidden" name="old_image_name" value="<?= $single_event['featured_image'] ?>">
                     <?php } ?>
 
