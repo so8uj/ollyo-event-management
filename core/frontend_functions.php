@@ -26,8 +26,8 @@ if($page === 'view_event.php'){
 
 // Minimise Title
 function minimise_title($title){
-    if (strlen($title) > 36){
-        return $new_title = substr($title, 0, 35) . '...';
+    if (strlen($title) > 40){
+        return $new_title = substr($title, 0, 39) . '...';
     }else{
         return $title;
     }
