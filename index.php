@@ -224,9 +224,13 @@
 
             $('#sort_events').change(function(){
                 if($(this).val() == 'asc'){
-                    $('#events-container').addClass('flex-row-reverse justify-content-end flex-wrap-reverse');
+                    $(".event-box").each(function (index, item) {
+                        $(item).css("order", $(".event-box").length - index);
+                    });
                 }else{
-                    $('#events-container').removeClass('flex-row-reverse justify-content-end flex-wrap-reverse');
+                    $(".event-box").each(function (index, item) {
+                        $(item).css("order", "1");
+                    });
                 }
             });
             $('#event_by_filter').change(function(){
