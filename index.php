@@ -147,6 +147,7 @@
                 $.ajax({
                     url: 'api/fetch_data.php',
                     type: 'GET',
+                    cache: false,
                     data: requested_datas,
                     dataType: 'json',
                     success: function (response) {
